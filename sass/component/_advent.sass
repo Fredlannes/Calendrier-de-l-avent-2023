@@ -1,9 +1,28 @@
+@use "../abstracts/_mixins" as mixins
+
 .advent
-    background-color: white
     height: 100vh
     display: grid
     grid-template-columns: repeat(5, 1fr)
     gap: 1rem
 
+        
     &_box
-        background-color: red
+        @include mixins.flex-center()
+        flex
+        //ca permet d'afficher toutes les images sans js mais en css avec cette methode
+        @for $i from 1 through 24 
+            &:nth-child(#{$i})
+                background-image: url("../images/image-#{$i}.svg")
+                background-repeat: no-repeat
+                background-size: contain
+                background-position: center
+                
+
+    &_number
+        background-color: white
+        height: 100%
+        aspect-ratio: 1/1
+        border-radius: 50% 50% 0 0
+        @include mixins.flex-center()
+        
